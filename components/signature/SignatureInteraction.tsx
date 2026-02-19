@@ -7,6 +7,8 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import ThreeObject from './ThreeObject';
 import Container from '@/components/layout/Container';
+import CanvasLoader from '@/components/ui/CanvasLoader';
+import WebGLErrorBoundary from '@/components/ui/WebGLErrorBoundary';
 import { fadeInUp } from '@/lib/animations';
 
 if (typeof window !== 'undefined') {
@@ -51,16 +53,18 @@ export default function SignatureInteraction() {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent/[0.03] rounded-full blur-[150px]" />
 
       <div className="absolute inset-0">
-        <Canvas
-          camera={{ position: [0, 0, 5], fov: 50 }}
-          dpr={[1, 1.5]}
-          gl={{ antialias: true, alpha: true }}
-          style={{ background: 'transparent' }}
-        >
-          <Suspense fallback={null}>
-            <ThreeObject />
+        <WebGLErrorBoundary>
+          <Suspense fallback={<CanvasLoader />}>
+            <Canvas
+              camera={{ position: [0, 0, 5], fov: 50 }}
+              dpr={[1, 1.5]}
+              gl={{ antialias: true, alpha: true }}
+              style={{ background: 'transparent' }}
+            >
+              <ThreeObject />
+            </Canvas>
           </Suspense>
-        </Canvas>
+        </WebGLErrorBoundary>
       </div>
 
       <Container size="default" className="relative z-10">

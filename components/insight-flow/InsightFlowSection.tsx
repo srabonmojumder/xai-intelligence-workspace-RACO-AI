@@ -77,8 +77,8 @@ export default function InsightFlowSection() {
               viewport={{ once: true }}
               className="text-body-lg text-text-tertiary max-w-lg mx-auto"
             >
-              Three stages. One continuous pipeline.
-              From raw signal to actionable intelligence.
+              Four stages. One continuous pipeline.
+              From raw signal to automated action.
             </motion.p>
           </div>
 

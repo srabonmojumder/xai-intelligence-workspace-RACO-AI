@@ -47,13 +47,14 @@ const config: Config = {
       },
       fontFamily: {
         sans: [
+          "var(--font-inter)",
           "Inter",
           "-apple-system",
           "BlinkMacSystemFont",
           "Segoe UI",
           "sans-serif",
         ],
-        mono: ["JetBrains Mono", "Fira Code", "monospace"],
+        mono: ["var(--font-mono)", "JetBrains Mono", "Fira Code", "monospace"],
       },
       fontSize: {
         "display-lg": ["4.5rem", { lineHeight: "1.05", letterSpacing: "-0.03em" }],

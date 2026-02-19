@@ -5,21 +5,25 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { Canvas } from '@react-three/fiber';
 import HeroScene from './HeroScene';
 import Container from '@/components/layout/Container';
+import CanvasLoader from '@/components/ui/CanvasLoader';
+import WebGLErrorBoundary from '@/components/ui/WebGLErrorBoundary';
 import { fadeInUp, staggerContainer } from '@/lib/animations';
 
 function HeroCanvas() {
   return (
     <div className="absolute inset-0 z-0">
-      <Canvas
-        camera={{ position: [0, 0, 5], fov: 50 }}
-        dpr={[1, 2]}
-        gl={{ antialias: true, alpha: true }}
-        style={{ background: 'transparent' }}
-      >
-        <Suspense fallback={null}>
-          <HeroScene />
+      <WebGLErrorBoundary>
+        <Suspense fallback={<CanvasLoader />}>
+          <Canvas
+            camera={{ position: [0, 0, 5], fov: 50 }}
+            dpr={[1, 2]}
+            gl={{ antialias: true, alpha: true }}
+            style={{ background: 'transparent' }}
+          >
+            <HeroScene />
+          </Canvas>
         </Suspense>
-      </Canvas>
+      </WebGLErrorBoundary>
     </div>
   );
 }
@@ -55,14 +59,14 @@ export default function HeroSection() {
           >
             <motion.div variants={fadeInUp} className="mb-6">
               <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full glass text-caption text-text-secondary font-medium">
-                <span className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse-slow" />
+                <span className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse-slow" aria-hidden="true" />
                 Intelligence Platform
               </span>
             </motion.div>
 
             <motion.h1
               variants={fadeInUp}
-              className="text-display-lg font-semibold text-text-primary mb-6 text-balance"
+              className="text-heading-lg sm:text-display md:text-display-lg font-semibold text-text-primary mb-6 text-balance"
             >
               Raw data.{' '}
               <span className="gradient-text-accent">
@@ -82,12 +86,18 @@ export default function HeroSection() {
               variants={fadeInUp}
               className="flex items-center justify-center gap-4"
             >
-              <button className="px-6 py-3 bg-accent hover:bg-accent-hover text-white font-medium text-body-sm rounded-xl transition-all duration-200 glow-accent hover:glow-accent-strong">
+              <a
+                href="#insight-flow"
+                className="inline-flex px-6 py-3 bg-accent hover:bg-accent-hover text-white font-medium text-body-sm rounded-xl transition-all duration-200 glow-accent hover:glow-accent-strong"
+              >
                 Start Building
-              </button>
-              <button className="px-6 py-3 glass hover:bg-surface-hover text-text-secondary hover:text-text-primary font-medium text-body-sm rounded-xl transition-all duration-200">
+              </a>
+              <a
+                href="#dashboard"
+                className="inline-flex px-6 py-3 glass hover:bg-surface-hover text-text-secondary hover:text-text-primary font-medium text-body-sm rounded-xl transition-all duration-200"
+              >
                 View Demo
-              </button>
+              </a>
             </motion.div>
           </motion.div>
         </Container>

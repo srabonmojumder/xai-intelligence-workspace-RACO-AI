@@ -96,8 +96,10 @@ export default function DashboardPreview() {
               </div>
             </div>
 
-            <div className="flex h-[560px]">
-              <Sidebar />
+            <div className="flex h-[480px] sm:h-[520px] md:h-[560px]">
+              <div className="hidden md:block">
+                <Sidebar />
+              </div>
               <DashboardContent />
             </div>
           </div>

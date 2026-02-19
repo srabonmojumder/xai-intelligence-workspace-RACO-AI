@@ -22,7 +22,7 @@ const SignatureInteraction = dynamic(
 
 export default function Home() {
   return (
-    <main className="relative">
+    <main id="main-content" className="relative">
       <Navbar />
       <HeroSection />
       <InsightFlowSection />

@@ -36,6 +36,13 @@ function StageIcon({ icon, isInView }: { icon: string; isInView: boolean }) {
         <path d="M12 2a7 7 0 015 11.9V17H7v-3.1A7 7 0 0112 2z" />
       </svg>
     ),
+    automate: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" />
+        <circle cx="12" cy="12" r="4" />
+        <path d="M12 10v2l1.5 1.5" />
+      </svg>
+    ),
   };
 
   return (
@@ -69,7 +76,7 @@ export default function InsightStage({
       <div className="flex items-start gap-8">
         <div className="hidden md:flex flex-col items-center gap-3 pt-2">
           <div className={`h-3 w-3 rounded-full transition-all duration-700 ${isInView ? 'bg-accent glow-accent scale-125' : 'bg-surface'}`} />
-          {index < 2 && (
+          {index < 3 && (
             <div className={`w-px h-32 transition-all duration-1000 ${isInView ? 'bg-gradient-to-b from-accent/40 to-transparent' : 'bg-border'}`} />
           )}
         </div>
