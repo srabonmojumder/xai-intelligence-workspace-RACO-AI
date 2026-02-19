@@ -38,15 +38,6 @@ export const INSIGHT_STAGES = [
     metricLabel: 'accuracy rate',
     icon: 'insight',
   },
-  {
-    id: 'automate',
-    number: '04',
-    title: 'AI Automations',
-    description: 'Insights trigger automated workflows and responses. Close the loop between intelligence and execution with zero human latency.',
-    metric: '340+',
-    metricLabel: 'automated actions / day',
-    icon: 'automate',
-  },
 ] as const;
 
 export const DASHBOARD_SIDEBAR_ITEMS = [
